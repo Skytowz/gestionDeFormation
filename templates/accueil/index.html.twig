@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccueilController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Bienvenue sur notre site de gestion de formation</h1>
+
+    <ul>
+        <li>
+          <a href={{ url("app_organisme_de_formation_index") }}>Voir les organismes de Formation</a>
+        </li>
+        <li>
+          <a href={{ url("app_formation_index") }}>Voir les formations</a>
+        </li>
+        <li>
+          <a href={{ url("app_promotion_index") }}>Voir les Promotions</a>
+        </li>
+        <li>
+          <a href={{ url("app_candidat_index") }}>Voir les candidats</a>
+        </li>
+        <li>
+          <a href={{ url("app_formateur_index") }}>Voir les formateurs</a>
+        </li>
+        <li>
+          <a href={{ url("app_salle_index") }}>Voir les salles</a>
+        </li>
+        <li>
+          <a href={{ url("app_session_index") }}>Voir les sessions</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

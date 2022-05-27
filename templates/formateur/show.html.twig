@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formateur{% endblock %}
+
+{% block body %}
+    <h1>Formateur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ formateur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ formateur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Num_tel</th>
+                <td>{{ formateur.numTel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ formateur.email }}</td>
+            </tr>
+        </tbody>
+        {% if formateur.promotions | length > 0 %}
+        <table  class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Encadre
+                    </th>
+                </tr>
+            </thead>
+                {% for promotion in  formateur.promotions %}
+                    <tr class="redirect" onclick="document.location = '{{ url("app_promotion_show", {id:promotion.id}) }} '">
+                        <td>{{ promotion }}</td>
+                    </tr>
+                {% endfor %}
+            <tbody>
+        </table>
+    {% endif %}
+    {% if formateur.sessions | length > 0 %}
+        <table  class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Enseigne
+                    </th>
+                </tr>
+            </thead>
+                {% for session in  formateur.sessions %}
+                    <tr class="redirect" onclick="document.location = '{{ url("app_session_show", {id:session.id}) }} '">
+                        <td>{{ session }}</td>
+                    </tr>
+                {% endfor %}
+            <tbody>
+        </table>
+    {% endif %}
+    </table>
+
+    <a href="{{ path('app_formateur_index') }}">back to list</a>
+
+    <a href="{{ path('app_formateur_edit', {'id': formateur.id}) }}">edit</a>
+
+    {{ include('formateur/_delete_form.html.twig') }}
+{% endblock %}

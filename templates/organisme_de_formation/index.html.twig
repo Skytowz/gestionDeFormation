@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OrganismeDeFormation index{% endblock %}
+
+{% block body %}
+    <h1>OrganismeDeFormation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Num_tel</th>
+                <th>Email_contact</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for organisme_de_formation in organisme_de_formations %}
+            <tr>
+                <td>{{ organisme_de_formation.id }}</td>
+                <td>{{ organisme_de_formation.nom }}</td>
+                <td>{{ organisme_de_formation.adresse }}</td>
+                <td>{{ organisme_de_formation.numTel }}</td>
+                <td>{{ organisme_de_formation.emailContact }}</td>
+                <td>
+                    <a href="{{ path('app_organisme_de_formation_show', {'id': organisme_de_formation.id}) }}">show</a>
+                    <a href="{{ path('app_organisme_de_formation_edit', {'id': organisme_de_formation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_organisme_de_formation_new') }}">Create new</a>
+{% endblock %}
